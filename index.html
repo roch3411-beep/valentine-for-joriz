@@ -8,11 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
     height:100vh;
@@ -31,7 +27,7 @@ body{
     justify-content:center;
     align-items:center;
     flex-direction:column;
-    background:linear-gradient(135deg,#0b1c2d,#000814);
+    background:#02060d;
     z-index:10;
 }
 
@@ -43,48 +39,59 @@ body{
     background:linear-gradient(45deg,#4facfe,#00f2fe);
     color:white;
     cursor:pointer;
-    box-shadow:0 0 20px rgba(79,172,254,0.7);
-    transition:0.3s;
+    box-shadow:0 0 25px #4facfe;
 }
 
-#startBtn:hover{
-    transform:scale(1.1);
-}
-
-/* MAIN CONTENT */
+/* MAIN */
 #main{
     display:none;
-    width:100%;
     height:100%;
-    position:relative;
+    width:100%;
     display:flex;
+    flex-direction:column;
     justify-content:center;
     align-items:center;
-    flex-direction:column;
     text-align:center;
     padding:20px;
 }
 
-/* BLUE ROSE */
+/* REAL BLUE ROSE */
 .rose{
+    position:relative;
     width:150px;
     height:150px;
-    background:radial-gradient(circle,#4facfe,#005bea);
-    border-radius:50%;
-    box-shadow:0 0 40px #4facfe;
-    animation:bloom 3s ease forwards;
     margin-bottom:30px;
+    animation:bloom 3s ease forwards;
 }
+
+.petal{
+    position:absolute;
+    width:100px;
+    height:100px;
+    background:linear-gradient(145deg,#4facfe,#003cff);
+    border-radius:50% 50% 50% 0;
+    transform-origin:bottom right;
+    box-shadow:0 0 20px #4facfe;
+}
+
+.p1{transform:rotate(0deg);}
+.p2{transform:rotate(45deg);}
+.p3{transform:rotate(90deg);}
+.p4{transform:rotate(135deg);}
+.p5{transform:rotate(180deg);}
+.p6{transform:rotate(225deg);}
+.p7{transform:rotate(270deg);}
+.p8{transform:rotate(315deg);}
 
 @keyframes bloom{
     0%{transform:scale(0);}
-    100%{transform:scale(1.2);}
+    100%{transform:scale(1);}
 }
 
 /* MESSAGE */
 h1{
     font-family:'Playfair Display',serif;
-    font-size:40px;
+    font-size:38px;
     margin-bottom:20px;
     color:#ffd700;
 }
@@ -97,26 +104,23 @@ h1{
     backdrop-filter:blur(10px);
     line-height:1.8;
     font-size:17px;
-    box-shadow:0 0 25px rgba(255,215,0,0.3);
 }
 
 /* FLOATING PHOTOS */
 .photo{
     position:absolute;
-    width:130px;
+    width:120px;
     border-radius:20px;
     animation:float 8s ease-in-out infinite;
-    box-shadow:0 0 20px rgba(79,172,254,0.5);
     mask-image:radial-gradient(circle,rgba(0,0,0,1) 70%,rgba(0,0,0,0) 100%);
 }
 
 @keyframes float{
     0%{transform:translateY(0px);}
-    50%{transform:translateY(-30px);}
+    50%{transform:translateY(-25px);}
     100%{transform:translateY(0px);}
 }
 
-/* positions */
 .photo:nth-child(1){top:10%;left:5%;}
 .photo:nth-child(2){bottom:10%;left:10%;}
 .photo:nth-child(3){top:20%;right:5%;}
@@ -124,51 +128,39 @@ h1{
 .photo:nth-child(5){top:50%;left:2%;}
 .photo:nth-child(6){top:60%;right:2%;}
 
-/* floating hearts */
-.heart{
-    position:absolute;
-    font-size:20px;
-    color:#4facfe;
-    animation:rise 10s linear infinite;
-}
-
-@keyframes rise{
-    0%{transform:translateY(100vh) scale(0);}
-    100%{transform:translateY(-10vh) scale(1.5);}
-}
 </style>
 </head>
 
 <body>
 
-<!-- START SCREEN -->
 <div id="startScreen">
     <h2 style="margin-bottom:20px;color:#ffd700;">A Special Surprise For You 💙</h2>
     <button id="startBtn">Open My Heart</button>
 </div>
 
-<!-- MAIN CONTENT -->
 <div id="main">
 
-    <div class="rose"></div>
+    <div class="rose">
+        <div class="petal p1"></div>
+        <div class="petal p2"></div>
+        <div class="petal p3"></div>
+        <div class="petal p4"></div>
+        <div class="petal p5"></div>
+        <div class="petal p6"></div>
+        <div class="petal p7"></div>
+        <div class="petal p8"></div>
+    </div>
 
     <h1>Happy Valentine's Day 💙</h1>
 
     <div class="message">
         Hi my love, my Mr. Joriz Doctora.  
         <br><br>
-        Happy Valentine’s Day! I just want to thank you for everything.  
-        I’m sorry if this is the only effort I can give for now — I promise I’ll make it up to you next time.  
-        <br><br>
-        I love you so much, more than words can explain.  
-        You are my comfort, my happiness, and my favorite person in this world.  
-        <br><br>
-        No matter what happens, I will always choose you. 💙
+        Happy Valentine’s Day! I just want to thank you for everything, kahit minsan may pagka kupal ka. Ily💙
     </div>
 
 </div>
 
-<!-- FLOATING PHOTOS -->
 <img src="pic1.jfif" class="photo">
 <img src="pic2.jfif" class="photo">
 <img src="pic3.jfif" class="photo">
@@ -176,7 +168,6 @@ h1{
 <img src="pic5.jfif" class="photo">
 <img src="pic6.jfif" class="photo">
 
-<!-- MUSIC -->
 <audio id="bgMusic" loop>
 <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
 </audio>
@@ -191,16 +182,6 @@ startBtn.onclick=function(){
     startScreen.style.display="none";
     main.style.display="flex";
     music.play();
-}
-
-/* hearts */
-for(let i=0;i<20;i++){
-    let heart=document.createElement("div");
-    heart.className="heart";
-    heart.innerHTML="💙";
-    heart.style.left=Math.random()*100+"vw";
-    heart.style.animationDuration=(Math.random()*5+5)+"s";
-    document.body.appendChild(heart);
 }
 </script>
 
