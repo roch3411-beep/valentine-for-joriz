@@ -34,30 +34,49 @@ body{
     align-items:center;
     background:radial-gradient(circle,#071a2f,#000);
     text-align:center;
+    z-index:10;
 }
 
-/* FLOWER */
-.flower{
-    width:220px;
-    animation:grow 4s ease forwards;
-    filter:drop-shadow(0 0 25px #00c3ff);
+/* BLUE FLOWER – hand drawn / vector style – NO PHOTO */
+.flower-bouquet {
+    width: 260px;
+    height: 260px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    filter: drop-shadow(0 0 25px #00c3ff);
+    animation: growFlower 3.5s cubic-bezier(0.2, 0.9, 0.3, 1.2) forwards;
+    transform-origin: bottom center;
 }
 
-@keyframes grow{
-    0%{
-        transform:scale(0);
-        opacity:0;
+/* simple but elegant bouquet of blue flowers – pure CSS with a couple of blossoms */
+.flower-bouquet svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+@keyframes growFlower {
+    0% {
+        transform: scale(0) translateY(30px);
+        opacity: 0;
     }
-    100%{
-        transform:scale(1);
-        opacity:1;
+    40% {
+        transform: scale(0.7) translateY(0);
+        opacity: 0.9;
+    }
+    100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
     }
 }
 
 #startScreen h2{
-    margin-top:30px;
-    font-size:28px;
+    margin-top: 20px;
+    font-size: 28px;
     color:#ffd700;
+    text-shadow: 0 0 10px #00a6ff;
 }
 
 #startBtn{
@@ -70,6 +89,11 @@ body{
     font-size:16px;
     cursor:pointer;
     box-shadow:0 0 20px #4facfe;
+    transition: transform 0.2s;
+}
+#startBtn:hover {
+    transform: scale(1.05);
+    background:linear-gradient(45deg,#00c3ff,#0099ff);
 }
 
 /* ================= MAIN PAGE ================= */
@@ -80,6 +104,9 @@ body{
     width:100%;
     justify-content:center;
     align-items:center;
+    background:radial-gradient(circle at 30% 30%, #0a2f44, #001220);
+    padding: 20px;
+    overflow-y: auto;  /* in case content overflows small screens */
 }
 
 /* FLEX LAYOUT */
@@ -88,19 +115,21 @@ body{
     align-items:center;
     justify-content:center;
     gap:40px;
+    flex-wrap: wrap; /* responsive */
 }
 
 /* MESSAGE */
 .message-box{
     max-width:450px;
-    background:rgba(255,255,255,0.05);
+    background:rgba(255,255,255,0.08);
     padding:30px;
     border-radius:20px;
     backdrop-filter:blur(10px);
     line-height:1.8;
     font-size:18px;
-    box-shadow:0 0 30px rgba(0,195,255,0.4);
+    box-shadow:0 0 40px rgba(0,195,255,0.5);
     text-align:left;
+    border: 1px solid rgba(0,191,255,0.3);
 }
 
 /* PHOTO COLUMNS */
@@ -116,14 +145,48 @@ body{
     object-fit:cover;
     border-radius:20px;
     animation:float 6s ease-in-out infinite;
-    box-shadow:0 0 15px #00c3ff;
-    mask-image:radial-gradient(circle,rgba(0,0,0,1) 75%,rgba(0,0,0,0) 100%);
+    box-shadow:0 0 20px #00c3ff;
+    border: 2px solid rgba(255,255,255,0.15);
+    transition: 0.3s;
+}
+.photo-column img:hover {
+    transform: scale(1.02);
+    box-shadow:0 0 30px #4facfe;
 }
 
 @keyframes float{
     0%{transform:translateY(0px);}
-    50%{transform:translateY(-20px);}
+    50%{transform:translateY(-15px);}
     100%{transform:translateY(0px);}
+}
+
+/* small screens adjustment */
+@media (max-width: 900px) {
+    .content {
+        gap: 20px;
+    }
+    .photo-column img {
+        width: 120px;
+        height: 120px;
+    }
+    .message-box {
+        font-size: 16px;
+        padding: 20px;
+        max-width: 350px;
+    }
+}
+@media (max-width: 700px) {
+    .content {
+        flex-direction: column;
+    }
+    .photo-column {
+        flex-direction: row;
+        order: 2;
+    }
+    .message-box {
+        order: 1;
+        max-width: 90%;
+    }
 }
 
 </style>
@@ -135,9 +198,41 @@ body{
 
 <div id="startScreen">
 
-    <!-- Flower Image (REAL and visible) -->
-    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93"
-         class="flower">
+    <!-- Flower Bouquet – handcrafted blue flower, not a photo -->
+    <div class="flower-bouquet">
+        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- stems -->
+            <path d="M95 110 L90 180 L110 180 L105 110" fill="#2e7d32" opacity="0.8"/>
+            <path d="M85 100 L75 175 L95 175 L92 100" fill="#2e7d32" opacity="0.7"/>
+            <path d="M115 100 L125 175 L105 175 L108 100" fill="#2e7d32" opacity="0.7"/>
+
+            <!-- leaves -->
+            <path d="M75 130 Q65 120 60 135 Q70 140 75 130" fill="#1b5e20" opacity="0.9"/>
+            <path d="M125 130 Q135 115 142 130 Q132 140 125 130" fill="#1b5e20" opacity="0.9"/>
+
+            <!-- big blue flower (main) -->
+            <circle cx="100" cy="80" r="28" fill="#1e88e5" stroke="#0d47a1" stroke-width="3"/>
+            <circle cx="100" cy="80" r="16" fill="#90caf9" stroke="#0d47a1" stroke-width="2"/>
+            <!-- petals around main flower -->
+            <circle cx="75" cy="60" r="18" fill="#42a5f5" stroke="#0d47a1" stroke-width="2" opacity="0.9"/>
+            <circle cx="125" cy="60" r="18" fill="#42a5f5" stroke="#0d47a1" stroke-width="2" opacity="0.9"/>
+            <circle cx="70" cy="95" r="16" fill="#1e88e5" stroke="#0d47a1" stroke-width="2" opacity="0.9"/>
+            <circle cx="130" cy="95" r="16" fill="#1e88e5" stroke="#0d47a1" stroke-width="2" opacity="0.9"/>
+            <circle cx="100" cy="50" r="16" fill="#64b5f6" stroke="#0d47a1" stroke-width="2" opacity="0.9"/>
+
+            <!-- flower hearts / centers -->
+            <circle cx="100" cy="80" r="8" fill="#fdd835" stroke="#b8860b" stroke-width="2"/>
+            <circle cx="75" cy="60" r="5" fill="#ffb74d" stroke="#b8860b" stroke-width="1.5"/>
+            <circle cx="125" cy="60" r="5" fill="#ffb74d" stroke="#b8860b" stroke-width="1.5"/>
+            <circle cx="70" cy="95" r="4" fill="#ffe082" stroke="#b8860b" stroke-width="1"/>
+            <circle cx="130" cy="95" r="4" fill="#ffe082" stroke="#b8860b" stroke-width="1"/>
+            <circle cx="100" cy="50" r="5" fill="#ffb74d" stroke="#b8860b" stroke-width="1.5"/>
+
+            <!-- small buds / extra blue accents -->
+            <circle cx="90" cy="125" r="12" fill="#1565c0" stroke="#0a2f6c" stroke-width="2" opacity="0.8"/>
+            <circle cx="110" cy="125" r="12" fill="#1565c0" stroke="#0a2f6c" stroke-width="2" opacity="0.8"/>
+        </svg>
+    </div>
 
     <h2>A Special Surprise For You 💙</h2>
     <button id="startBtn">Open My Heart</button>
@@ -149,11 +244,14 @@ body{
 <div id="main">
     <div class="content">
 
-        <!-- LEFT 3 PHOTOS -->
+        <!-- LEFT 3 PHOTOS (placeholders – replace with your actual images) -->
         <div class="photo-column">
-            <img src="pic1.jfif">
-            <img src="pic2.jfif">
-            <img src="pic3.jfif">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Crect width='150' height='150' fill='%231e3b5a'/%3E%3Ccircle cx='75' cy='75' r='40' fill='%23366bb3'/%3E%3Ctext x='75' y='85' font-size='22' text-anchor='middle' fill='%23ffffff' font-family='Arial'%3E💙%3C/text%3E%3C/svg%3E"
+                 alt="memory 1">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Crect width='150' height='150' fill='%231e3b5a'/%3E%3Ccircle cx='75' cy='75' r='40' fill='%234facfe'/%3E%3Ctext x='75' y='85' font-size='22' text-anchor='middle' fill='%23ffffff' font-family='Arial'%3E🌼%3C/text%3E%3C/svg%3E"
+                 alt="memory 2">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Crect width='150' height='150' fill='%231e3b5a'/%3E%3Ccircle cx='75' cy='75' r='40' fill='%2300bcd4'/%3E%3Ctext x='75' y='85' font-size='22' text-anchor='middle' fill='%23ffffff' font-family='Arial'%3E⭐%3C/text%3E%3C/svg%3E"
+                 alt="memory 3">
         </div>
 
         <!-- MESSAGE -->
@@ -165,9 +263,12 @@ body{
 
         <!-- RIGHT 3 PHOTOS -->
         <div class="photo-column">
-            <img src="pic4.jfif">
-            <img src="pic5.jfif">
-            <img src="pic6.jfif">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Crect width='150' height='150' fill='%231e3b5a'/%3E%3Ccircle cx='75' cy='75' r='40' fill='%232196f3'/%3E%3Ctext x='75' y='85' font-size='22' text-anchor='middle' fill='%23ffffff' font-family='Arial'%3E🌸%3C/text%3E%3C/svg%3E"
+                 alt="memory 4">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Crect width='150' height='150' fill='%231e3b5a'/%3E%3Ccircle cx='75' cy='75' r='40' fill='%237b1fa2'/%3E%3Ctext x='75' y='85' font-size='22' text-anchor='middle' fill='%23ffffff' font-family='Arial'%3E💫%3C/text%3E%3C/svg%3E"
+                 alt="memory 5">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Crect width='150' height='150' fill='%231e3b5a'/%3E%3Ccircle cx='75' cy='75' r='40' fill='%2300796b'/%3E%3Ctext x='75' y='85' font-size='22' text-anchor='middle' fill='%23ffffff' font-family='Arial'%3E🌿%3C/text%3E%3C/svg%3E"
+                 alt="memory 6">
         </div>
 
     </div>
@@ -187,7 +288,7 @@ const music = document.getElementById("bgMusic");
 startBtn.onclick = function(){
     startScreen.style.display = "none";
     main.style.display = "flex";
-    music.play();
+    music.play().catch(e => console.log("autoplay blocked? user click should work"));
 }
 </script>
 
