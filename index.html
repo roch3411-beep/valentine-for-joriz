@@ -1,1 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Valentine's Day 💙</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    overflow:hidden;
+    color:white;
+    text-align:center;
+}
+
+/* Bouquet Screen */
+#bouquetScreen{
+    position:absolute;
+    width:100%;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    animation:fadeOut 3s ease forwards;
+    animation-delay:6s;
+}
+
+.flower{
+    width:120px;
+    height:120px;
+    background:radial-gradient(circle,#4facfe,#00f2fe);
+    border-radius:50%;
+    animation:grow 3s ease forwards;
+}
+
+.stem{
+    width:8px;
+    height:0;
+    background:#00ffcc;
+    margin-top:-10px;
+    animation:stemGrow 3s ease forwards;
+}
+
+@keyframes grow{
+    0%{transform:scale(0);}
+    100%{transform:scale(1.2);}
+}
+
+@keyframes stemGrow{
+    0%{height:0;}
+    100%{height:150px;}
+}
+
+@keyframes fadeOut{
+    to{opacity:0;visibility:hidden;}
+}
+
+/* Message Screen */
+#messageScreen{
+    position:absolute;
+    width:100%;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    opacity:0;
+    animation:fadeIn 3s ease forwards;
+    animation-delay:7s;
+    padding:20px;
+}
+
+@keyframes fadeIn{
+    to{opacity:1;}
+}
+
+h1{
+    font-family:'Dancing Script',cursive;
+    font-size:3rem;
+    margin-bottom:20px;
+    color:#4facfe;
+}
+
+.message{
+    max-width:600px;
+    font-size:1.1rem;
+    line-height:1.8;
+    background:rgba(255,255,255,0.1);
+    padding:25px;
+    border-radius:20px;
+    backdrop-filter:blur(10px);
+}
+
+/* Floating Photos */
+.photo{
+    position:absolute;
+    width:120px;
+    border-radius:15px;
+    animation:float 10s infinite ease-in-out;
+    box-shadow:0 0 15px rgba(255,255,255,0.4);
+}
+
+@keyframes float{
+    0%{transform:translateY(0px);}
+    50%{transform:translateY(-30px);}
+    100%{transform:translateY(0px);}
+}
+
+.photo:nth-child(1){top:10%;left:5%;}
+.photo:nth-child(2){top:70%;left:10%;}
+.photo:nth-child(3){top:20%;right:5%;}
+.photo:nth-child(4){bottom:10%;right:10%;}
+.photo:nth-child(5){bottom:15%;left:40%;}
+.photo:nth-child(6){top:50%;right:40%;}
+
+/* Floating Hearts */
+.heart{
+    position:absolute;
+    color:#4facfe;
+    animation:hearts 8s linear infinite;
+}
+
+@keyframes hearts{
+    0%{transform:translateY(100vh) scale(0);}
+    100%{transform:translateY(-10vh) scale(1.5);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC -->
+<audio autoplay loop>
+<source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
+</audio>
+
+<!-- BOUQUET SCREEN -->
+<div id="bouquetScreen">
+    <div class="flower"></div>
+    <div class="stem"></div>
+    <h2 style="margin-top:20px;">A special flower for you 💙</h2>
+</div>
+
+<!-- MESSAGE SCREEN -->
+<div id="messageScreen">
+    <h1>Happy Valentine's Day 💙</h1>
+
+    <div class="message">
+        Hi my love, my Mr. Joriz Doctora.  
+        <br><br>
+        Happy Valentine’s Day! I just wanted to thank you for everything.  
+        I’m sorry if this is the only effort I can give for now — I promise I’ll make it up to you next time.  
+        <br><br>
+        I love you so much, more than words can explain.  
+        You are my comfort, my happiness, and my favorite person in this world.  
+        <br><br>
+        No matter what happens, I will always choose you. 💙
+    </div>
+</div>
+
+<!-- FLOATING PHOTOS -->
+<img src="pic1.jpg" class="photo">
+<img src="pic2.jpg" class="photo">
+<img src="pic3.jpg" class="photo">
+<img src="pic4.jpg" class="photo">
+<img src="pic5.jpg" class="photo">
+<img src="pic6.jpg" class="photo">
+
+<script>
+// Create floating hearts
+for(let i=0;i<20;i++){
+    let heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="💙";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(Math.random()*5+5)+"s";
+    document.body.appendChild(heart);
+}
+</script>
+
+</body>
+</html>
 
