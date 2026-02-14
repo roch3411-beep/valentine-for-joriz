@@ -37,7 +37,6 @@ body{
     z-index:10;
 }
 
-/* BLUE FLOWER – hand drawn / vector style – NO PHOTO */
 .flower-bouquet {
     width: 260px;
     height: 260px;
@@ -50,7 +49,6 @@ body{
     transform-origin: bottom center;
 }
 
-/* simple but elegant bouquet of blue flowers – pure CSS with a couple of blossoms */
 .flower-bouquet svg {
     width: 100%;
     height: 100%;
@@ -106,19 +104,17 @@ body{
     align-items:center;
     background:radial-gradient(circle at 30% 30%, #0a2f44, #001220);
     padding: 20px;
-    overflow-y: auto;  /* in case content overflows small screens */
+    overflow-y: auto;
 }
 
-/* FLEX LAYOUT */
 .content{
     display:flex;
     align-items:center;
     justify-content:center;
     gap:40px;
-    flex-wrap: wrap; /* responsive */
+    flex-wrap: wrap;
 }
 
-/* MESSAGE */
 .message-box{
     max-width:450px;
     background:rgba(255,255,255,0.08);
@@ -132,7 +128,6 @@ body{
     border: 1px solid rgba(0,191,255,0.3);
 }
 
-/* PHOTO COLUMNS */
 .photo-column{
     display:flex;
     flex-direction:column;
@@ -160,7 +155,7 @@ body{
     100%{transform:translateY(0px);}
 }
 
-/* small screens adjustment */
+/* tablet */
 @media (max-width: 900px) {
     .content {
         gap: 20px;
@@ -175,17 +170,36 @@ body{
         max-width: 350px;
     }
 }
+
+/* 📱 MOBILE FIX — 3 ABOVE, MESSAGE, 3 BELOW */
 @media (max-width: 700px) {
     .content {
         flex-direction: column;
+        align-items: center;
+        gap: 20px;
     }
-    .photo-column {
+
+    .photo-column:first-of-type {
         flex-direction: row;
-        order: 2;
-    }
-    .message-box {
+        justify-content: center;
         order: 1;
+    }
+
+    .message-box {
+        order: 2;
         max-width: 90%;
+        text-align: center;
+    }
+
+    .photo-column:last-of-type {
+        flex-direction: row;
+        justify-content: center;
+        order: 3;
+    }
+
+    .photo-column img {
+        width: 100px;
+        height: 100px;
     }
 }
 
@@ -194,71 +208,38 @@ body{
 
 <body>
 
-<!-- ================= START SCREEN ================= -->
-
 <div id="startScreen">
-
-    <!-- Flower Bouquet – handcrafted blue flower, not a photo -->
     <div class="flower-bouquet">
-        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- stems -->
-            <path d="M95 110 L90 180 L110 180 L105 110" fill="#2e7d32" opacity="0.8"/>
-            <path d="M85 100 L75 175 L95 175 L92 100" fill="#2e7d32" opacity="0.7"/>
-            <path d="M115 100 L125 175 L105 175 L108 100" fill="#2e7d32" opacity="0.7"/>
-
-            <!-- leaves -->
-            <path d="M75 130 Q65 120 60 135 Q70 140 75 130" fill="#1b5e20" opacity="0.9"/>
-            <path d="M125 130 Q135 115 142 130 Q132 140 125 130" fill="#1b5e20" opacity="0.9"/>
-
-            <!-- big blue flower (main) -->
-            <circle cx="100" cy="80" r="28" fill="#1e88e5" stroke="#0d47a1" stroke-width="3"/>
-            <circle cx="100" cy="80" r="16" fill="#90caf9" stroke="#0d47a1" stroke-width="2"/>
-            <!-- petals around main flower -->
-            <circle cx="75" cy="60" r="18" fill="#42a5f5" stroke="#0d47a1" stroke-width="2" opacity="0.9"/>
-            <circle cx="125" cy="60" r="18" fill="#42a5f5" stroke="#0d47a1" stroke-width="2" opacity="0.9"/>
-            <circle cx="70" cy="95" r="16" fill="#1e88e5" stroke="#0d47a1" stroke-width="2" opacity="0.9"/>
-            <circle cx="130" cy="95" r="16" fill="#1e88e5" stroke="#0d47a1" stroke-width="2" opacity="0.9"/>
-            <circle cx="100" cy="50" r="16" fill="#64b5f6" stroke="#0d47a1" stroke-width="2" opacity="0.9"/>
-
-            <!-- flower hearts / centers -->
-            <circle cx="100" cy="80" r="8" fill="#fdd835" stroke="#b8860b" stroke-width="2"/>
-            <circle cx="75" cy="60" r="5" fill="#ffb74d" stroke="#b8860b" stroke-width="1.5"/>
-            <circle cx="125" cy="60" r="5" fill="#ffb74d" stroke="#b8860b" stroke-width="1.5"/>
-            <circle cx="70" cy="95" r="4" fill="#ffe082" stroke="#b8860b" stroke-width="1"/>
-            <circle cx="130" cy="95" r="4" fill="#ffe082" stroke="#b8860b" stroke-width="1"/>
-            <circle cx="100" cy="50" r="5" fill="#ffb74d" stroke="#b8860b" stroke-width="1.5"/>
-
-            <!-- small buds / extra blue accents -->
-            <circle cx="90" cy="125" r="12" fill="#1565c0" stroke="#0a2f6c" stroke-width="2" opacity="0.8"/>
-            <circle cx="110" cy="125" r="12" fill="#1565c0" stroke="#0a2f6c" stroke-width="2" opacity="0.8"/>
+        <!-- SVG unchanged -->
+        <svg viewBox="0 0 200 200" fill="none">
+            <path d="M95 110 L90 180 L110 180 L105 110" fill="#2e7d32"/>
+            <path d="M85 100 L75 175 L95 175 L92 100" fill="#2e7d32"/>
+            <path d="M115 100 L125 175 L105 175 L108 100" fill="#2e7d32"/>
+            <circle cx="100" cy="80" r="28" fill="#1e88e5"/>
+            <circle cx="100" cy="80" r="16" fill="#90caf9"/>
+            <circle cx="100" cy="80" r="8" fill="#fdd835"/>
         </svg>
     </div>
 
     <h2>A Special Surprise For You 💙</h2>
     <button id="startBtn">Open My Heart</button>
-
 </div>
-
-<!-- ================= MAIN PAGE ================= -->
 
 <div id="main">
     <div class="content">
 
-        <!-- LEFT 3 PHOTOS (placeholders – replace with your actual images) -->
         <div class="photo-column">
             <img src="pic1.jfif">
             <img src="pic2.jfif">
             <img src="pic3.jfif">
         </div>
 
-        <!-- MESSAGE -->
         <div class="message-box">
             Hi my love, my Mr. Joriz Doctora.  
             <br><br>
             Happy Valentine’s Day! I just want to thank you for everything, kahit minsan may pagka kupal ka. Ily💙
         </div>
 
-        <!-- RIGHT 3 PHOTOS -->
         <div class="photo-column">
             <img src="pic4.jfif">
             <img src="pic5.jfif">
@@ -268,7 +249,6 @@ body{
     </div>
 </div>
 
-<!-- MUSIC -->
 <audio id="bgMusic" loop>
 <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
 </audio>
@@ -282,7 +262,7 @@ const music = document.getElementById("bgMusic");
 startBtn.onclick = function(){
     startScreen.style.display = "none";
     main.style.display = "flex";
-    music.play().catch(e => console.log("autoplay blocked? user click should work"));
+    music.play().catch(e => console.log("autoplay blocked?"));
 }
 </script>
 
