@@ -3,111 +3,111 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Valentine's Day 💙</title>
+<title>For My Love 💙</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
 }
 
 body{
-    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    height:100vh;
     overflow:hidden;
+    font-family:'Poppins',sans-serif;
+    background:radial-gradient(circle at center,#0b1c2d,#02060d);
     color:white;
-    text-align:center;
 }
 
-/* Bouquet Screen */
-#bouquetScreen{
+/* START SCREEN */
+#startScreen{
     position:absolute;
     width:100%;
-    height:100vh;
+    height:100%;
     display:flex;
     justify-content:center;
     align-items:center;
     flex-direction:column;
-    animation:fadeOut 3s ease forwards;
-    animation-delay:6s;
+    background:linear-gradient(135deg,#0b1c2d,#000814);
+    z-index:10;
 }
 
-.flower{
-    width:120px;
-    height:120px;
-    background:radial-gradient(circle,#4facfe,#00f2fe);
+#startBtn{
+    padding:15px 40px;
+    border:none;
+    border-radius:50px;
+    font-size:18px;
+    background:linear-gradient(45deg,#4facfe,#00f2fe);
+    color:white;
+    cursor:pointer;
+    box-shadow:0 0 20px rgba(79,172,254,0.7);
+    transition:0.3s;
+}
+
+#startBtn:hover{
+    transform:scale(1.1);
+}
+
+/* MAIN CONTENT */
+#main{
+    display:none;
+    width:100%;
+    height:100%;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    padding:20px;
+}
+
+/* BLUE ROSE */
+.rose{
+    width:150px;
+    height:150px;
+    background:radial-gradient(circle,#4facfe,#005bea);
     border-radius:50%;
-    animation:grow 3s ease forwards;
+    box-shadow:0 0 40px #4facfe;
+    animation:bloom 3s ease forwards;
+    margin-bottom:30px;
 }
 
-.stem{
-    width:8px;
-    height:0;
-    background:#00ffcc;
-    margin-top:-10px;
-    animation:stemGrow 3s ease forwards;
-}
-
-@keyframes grow{
+@keyframes bloom{
     0%{transform:scale(0);}
     100%{transform:scale(1.2);}
 }
 
-@keyframes stemGrow{
-    0%{height:0;}
-    100%{height:150px;}
-}
-
-@keyframes fadeOut{
-    to{opacity:0;visibility:hidden;}
-}
-
-/* Message Screen */
-#messageScreen{
-    position:absolute;
-    width:100%;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    opacity:0;
-    animation:fadeIn 3s ease forwards;
-    animation-delay:7s;
-    padding:20px;
-}
-
-@keyframes fadeIn{
-    to{opacity:1;}
-}
-
+/* MESSAGE */
 h1{
-    font-family:'Dancing Script',cursive;
-    font-size:3rem;
+    font-family:'Playfair Display',serif;
+    font-size:40px;
     margin-bottom:20px;
-    color:#4facfe;
+    color:#ffd700;
 }
 
 .message{
-    max-width:600px;
-    font-size:1.1rem;
-    line-height:1.8;
-    background:rgba(255,255,255,0.1);
-    padding:25px;
+    max-width:650px;
+    background:rgba(255,255,255,0.05);
+    padding:30px;
     border-radius:20px;
     backdrop-filter:blur(10px);
+    line-height:1.8;
+    font-size:17px;
+    box-shadow:0 0 25px rgba(255,215,0,0.3);
 }
 
-/* Floating Photos */
+/* FLOATING PHOTOS */
 .photo{
     position:absolute;
-    width:120px;
-    border-radius:15px;
-    animation:float 10s infinite ease-in-out;
-    box-shadow:0 0 15px rgba(255,255,255,0.4);
+    width:130px;
+    border-radius:20px;
+    animation:float 8s ease-in-out infinite;
+    box-shadow:0 0 20px rgba(79,172,254,0.5);
+    mask-image:radial-gradient(circle,rgba(0,0,0,1) 70%,rgba(0,0,0,0) 100%);
 }
 
 @keyframes float{
@@ -116,21 +116,23 @@ h1{
     100%{transform:translateY(0px);}
 }
 
+/* positions */
 .photo:nth-child(1){top:10%;left:5%;}
-.photo:nth-child(2){top:70%;left:10%;}
+.photo:nth-child(2){bottom:10%;left:10%;}
 .photo:nth-child(3){top:20%;right:5%;}
-.photo:nth-child(4){bottom:10%;right:10%;}
-.photo:nth-child(5){bottom:15%;left:40%;}
-.photo:nth-child(6){top:50%;right:40%;}
+.photo:nth-child(4){bottom:15%;right:10%;}
+.photo:nth-child(5){top:50%;left:2%;}
+.photo:nth-child(6){top:60%;right:2%;}
 
-/* Floating Hearts */
+/* floating hearts */
 .heart{
     position:absolute;
+    font-size:20px;
     color:#4facfe;
-    animation:hearts 8s linear infinite;
+    animation:rise 10s linear infinite;
 }
 
-@keyframes hearts{
+@keyframes rise{
     0%{transform:translateY(100vh) scale(0);}
     100%{transform:translateY(-10vh) scale(1.5);}
 }
@@ -139,26 +141,23 @@ h1{
 
 <body>
 
-<!-- MUSIC -->
-<audio autoplay loop>
-<source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
-</audio>
-
-<!-- BOUQUET SCREEN -->
-<div id="bouquetScreen">
-    <div class="flower"></div>
-    <div class="stem"></div>
-    <h2 style="margin-top:20px;">A special flower for you 💙</h2>
+<!-- START SCREEN -->
+<div id="startScreen">
+    <h2 style="margin-bottom:20px;color:#ffd700;">A Special Surprise For You 💙</h2>
+    <button id="startBtn">Open My Heart</button>
 </div>
 
-<!-- MESSAGE SCREEN -->
-<div id="messageScreen">
+<!-- MAIN CONTENT -->
+<div id="main">
+
+    <div class="rose"></div>
+
     <h1>Happy Valentine's Day 💙</h1>
 
     <div class="message">
         Hi my love, my Mr. Joriz Doctora.  
         <br><br>
-        Happy Valentine’s Day! I just wanted to thank you for everything.  
+        Happy Valentine’s Day! I just want to thank you for everything.  
         I’m sorry if this is the only effort I can give for now — I promise I’ll make it up to you next time.  
         <br><br>
         I love you so much, more than words can explain.  
@@ -166,6 +165,7 @@ h1{
         <br><br>
         No matter what happens, I will always choose you. 💙
     </div>
+
 </div>
 
 <!-- FLOATING PHOTOS -->
@@ -176,8 +176,24 @@ h1{
 <img src="pic5.jfif" class="photo">
 <img src="pic6.jfif" class="photo">
 
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+<source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
+</audio>
+
 <script>
-// Create floating hearts
+const startBtn=document.getElementById("startBtn");
+const startScreen=document.getElementById("startScreen");
+const main=document.getElementById("main");
+const music=document.getElementById("bgMusic");
+
+startBtn.onclick=function(){
+    startScreen.style.display="none";
+    main.style.display="flex";
+    music.play();
+}
+
+/* hearts */
 for(let i=0;i<20;i++){
     let heart=document.createElement("div");
     heart.className="heart";
@@ -190,4 +206,3 @@ for(let i=0;i<20;i++){
 
 </body>
 </html>
-
