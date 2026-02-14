@@ -5,20 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For My Love 💙</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
 body{
+    font-family:'Poppins',sans-serif;
     height:100vh;
     overflow:hidden;
-    font-family:'Poppins',sans-serif;
-    background:radial-gradient(circle at center,#0b1c2d,#02060d);
+    background:radial-gradient(circle at center,#0b1c2d,#000814);
     color:white;
 }
 
-/* START SCREEN */
+/* ================= START PAGE ================= */
 #startScreen{
     position:absolute;
     width:100%;
@@ -27,161 +31,137 @@ body{
     justify-content:center;
     align-items:center;
     flex-direction:column;
-    background:#02060d;
-    z-index:10;
+    background:radial-gradient(circle,#07121f,#000);
+    text-align:center;
+}
+
+.growing-flower{
+    width:200px;
+    animation:growFlower 5s ease forwards;
+    filter:drop-shadow(0 0 25px #00c3ff);
+}
+
+@keyframes growFlower{
+    0%{
+        transform:scale(0);
+        opacity:0;
+    }
+    100%{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+#startScreen h2{
+    margin-top:30px;
+    font-size:28px;
+    color:#ffd700;
 }
 
 #startBtn{
-    padding:15px 40px;
+    margin-top:20px;
+    padding:12px 35px;
     border:none;
-    border-radius:50px;
-    font-size:18px;
+    border-radius:30px;
     background:linear-gradient(45deg,#4facfe,#00f2fe);
     color:white;
+    font-size:16px;
     cursor:pointer;
-    box-shadow:0 0 25px #4facfe;
+    box-shadow:0 0 20px #4facfe;
 }
 
-/* MAIN */
+/* ================= MAIN PAGE ================= */
+
 #main{
     display:none;
     height:100%;
     width:100%;
     display:flex;
-    flex-direction:column;
     justify-content:center;
     align-items:center;
-    text-align:center;
-    padding:20px;
+    gap:40px;
+    padding:40px;
 }
 
-/* REAL BLUE ROSE */
-.rose{
-    position:relative;
-    width:150px;
-    height:150px;
-    margin-bottom:30px;
-    animation:bloom 3s ease forwards;
-}
-
-.petal{
-    position:absolute;
-    width:100px;
-    height:100px;
-    background:linear-gradient(145deg,#4facfe,#003cff);
-    border-radius:50% 50% 50% 0;
-    transform-origin:bottom right;
-    box-shadow:0 0 20px #4facfe;
-}
-
-.p1{transform:rotate(0deg);}
-.p2{transform:rotate(45deg);}
-.p3{transform:rotate(90deg);}
-.p4{transform:rotate(135deg);}
-.p5{transform:rotate(180deg);}
-.p6{transform:rotate(225deg);}
-.p7{transform:rotate(270deg);}
-.p8{transform:rotate(315deg);}
-
-@keyframes bloom{
-    0%{transform:scale(0);}
-    100%{transform:scale(1);}
-}
-
-/* MESSAGE */
-h1{
-    font-family:'Playfair Display',serif;
-    font-size:38px;
-    margin-bottom:20px;
-    color:#ffd700;
-}
-
-.message{
-    max-width:650px;
+/* MESSAGE BOX */
+.message-box{
+    max-width:500px;
     background:rgba(255,255,255,0.05);
     padding:30px;
     border-radius:20px;
     backdrop-filter:blur(10px);
     line-height:1.8;
-    font-size:17px;
+    font-size:18px;
+    box-shadow:0 0 25px rgba(0,195,255,0.4);
 }
 
-/* FLOATING PHOTOS */
-.photo{
-    position:absolute;
-    width:120px;
+/* PHOTOS CONTAINER */
+.photos{
+    display:grid;
+    grid-template-columns:repeat(2, 150px);
+    gap:20px;
+}
+
+.photos img{
+    width:150px;
+    height:150px;
+    object-fit:cover;
     border-radius:20px;
-    animation:float 8s ease-in-out infinite;
-    mask-image:radial-gradient(circle,rgba(0,0,0,1) 70%,rgba(0,0,0,0) 100%);
+    animation:float 6s ease-in-out infinite;
+    box-shadow:0 0 15px #00c3ff;
+    mask-image:radial-gradient(circle,rgba(0,0,0,1) 75%,rgba(0,0,0,0) 100%);
 }
 
 @keyframes float{
     0%{transform:translateY(0px);}
-    50%{transform:translateY(-25px);}
+    50%{transform:translateY(-20px);}
     100%{transform:translateY(0px);}
 }
-
-.photo:nth-child(1){top:10%;left:5%;}
-.photo:nth-child(2){bottom:10%;left:10%;}
-.photo:nth-child(3){top:20%;right:5%;}
-.photo:nth-child(4){bottom:15%;right:10%;}
-.photo:nth-child(5){top:50%;left:2%;}
-.photo:nth-child(6){top:60%;right:2%;}
 
 </style>
 </head>
 
 <body>
 
+<!-- ================= START SCREEN ================= -->
 <div id="startScreen">
-    <h2 style="margin-bottom:20px;color:#ffd700;">A Special Surprise For You 💙</h2>
+
+    <!-- Replace this link with your flower image if you want -->
+    <img src="https://i.imgur.com/4AiXzf8.png" class="growing-flower">
+
+    <h2>A Special Surprise For You 💙</h2>
     <button id="startBtn">Open My Heart</button>
+
 </div>
 
+<!-- ================= MAIN PAGE ================= -->
 <div id="main">
 
-    <div class="rose">
-        <div class="petal p1"></div>
-        <div class="petal p2"></div>
-        <div class="petal p3"></div>
-        <div class="petal p4"></div>
-        <div class="petal p5"></div>
-        <div class="petal p6"></div>
-        <div class="petal p7"></div>
-        <div class="petal p8"></div>
-    </div>
-
-    <h1>Happy Valentine's Day 💙</h1>
-
-    <div class="message">
+    <div class="message-box">
         Hi my love, my Mr. Joriz Doctora.  
         <br><br>
         Happy Valentine’s Day! I just want to thank you for everything, kahit minsan may pagka kupal ka. Ily💙
     </div>
 
+    <div class="photos">
+        <img src="pic1.jfif">
+        <img src="pic2.jfif">
+        <img src="pic3.jfif">
+        <img src="pic4.jfif">
+        <img src="pic5.jfif">
+        <img src="pic6.jfif">
+    </div>
+
 </div>
 
-<img src="pic1.jfif" class="photo">
-<img src="pic2.jfif" class="photo">
-<img src="pic3.jfif" class="photo">
-<img src="pic4.jfif" class="photo">
-<img src="pic5.jfif" class="photo">
-<img src="pic6.jfif" class="photo">
-
-<audio id="bgMusic" loop>
-<source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
-</audio>
-
 <script>
-const startBtn=document.getElementById("startBtn");
-const startScreen=document.getElementById("startScreen");
-const main=document.getElementById("main");
-const music=document.getElementById("bgMusic");
+const startBtn = document.getElementById("startBtn");
+const startScreen = document.getElementById("startScreen");
+const main = document.getElementById("main");
 
-startBtn.onclick=function(){
-    startScreen.style.display="none";
-    main.style.display="flex";
-    music.play();
+startBtn.onclick = function(){
+    startScreen.style.display = "none";
+    main.style.display = "flex";
 }
 </script>
 
