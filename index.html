@@ -16,32 +16,34 @@
 
 body{
     font-family:'Poppins',sans-serif;
+    background:radial-gradient(circle at center,#071a2f,#000814);
+    color:white;
     height:100vh;
     overflow:hidden;
-    background:radial-gradient(circle at center,#0b1c2d,#000814);
-    color:white;
 }
 
-/* ================= START PAGE ================= */
+/* ================= START SCREEN ================= */
+
 #startScreen{
     position:absolute;
     width:100%;
     height:100%;
     display:flex;
+    flex-direction:column;
     justify-content:center;
     align-items:center;
-    flex-direction:column;
-    background:radial-gradient(circle,#07121f,#000);
+    background:radial-gradient(circle,#071a2f,#000);
     text-align:center;
 }
 
-.growing-flower{
-    width:200px;
-    animation:growFlower 5s ease forwards;
+/* FLOWER */
+.flower{
+    width:220px;
+    animation:grow 4s ease forwards;
     filter:drop-shadow(0 0 25px #00c3ff);
 }
 
-@keyframes growFlower{
+@keyframes grow{
     0%{
         transform:scale(0);
         opacity:0;
@@ -76,33 +78,39 @@ body{
     display:none;
     height:100%;
     width:100%;
-    display:flex;
     justify-content:center;
     align-items:center;
-    gap:40px;
-    padding:40px;
 }
 
-/* MESSAGE BOX */
+/* FLEX LAYOUT */
+.content{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:40px;
+}
+
+/* MESSAGE */
 .message-box{
-    max-width:500px;
+    max-width:450px;
     background:rgba(255,255,255,0.05);
     padding:30px;
     border-radius:20px;
     backdrop-filter:blur(10px);
     line-height:1.8;
     font-size:18px;
-    box-shadow:0 0 25px rgba(0,195,255,0.4);
+    box-shadow:0 0 30px rgba(0,195,255,0.4);
+    text-align:left;
 }
 
-/* PHOTOS CONTAINER */
-.photos{
-    display:grid;
-    grid-template-columns:repeat(2, 150px);
+/* PHOTO COLUMNS */
+.photo-column{
+    display:flex;
+    flex-direction:column;
     gap:20px;
 }
 
-.photos img{
+.photo-column img{
     width:150px;
     height:150px;
     object-fit:cover;
@@ -124,10 +132,12 @@ body{
 <body>
 
 <!-- ================= START SCREEN ================= -->
+
 <div id="startScreen">
 
-    <!-- Replace this link with your flower image if you want -->
-    <img src="https://i.imgur.com/4AiXzf8.png" class="growing-flower">
+    <!-- Flower Image (REAL and visible) -->
+    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93"
+         class="flower">
 
     <h2>A Special Surprise For You 💙</h2>
     <button id="startBtn">Open My Heart</button>
@@ -135,33 +145,49 @@ body{
 </div>
 
 <!-- ================= MAIN PAGE ================= -->
+
 <div id="main">
+    <div class="content">
 
-    <div class="message-box">
-        Hi my love, my Mr. Joriz Doctora.  
-        <br><br>
-        Happy Valentine’s Day! I just want to thank you for everything, kahit minsan may pagka kupal ka. Ily💙
+        <!-- LEFT 3 PHOTOS -->
+        <div class="photo-column">
+            <img src="pic1.jfif">
+            <img src="pic2.jfif">
+            <img src="pic3.jfif">
+        </div>
+
+        <!-- MESSAGE -->
+        <div class="message-box">
+            Hi my love, my Mr. Joriz Doctora.  
+            <br><br>
+            Happy Valentine’s Day! I just want to thank you for everything, kahit minsan may pagka kupal ka. Ily💙
+        </div>
+
+        <!-- RIGHT 3 PHOTOS -->
+        <div class="photo-column">
+            <img src="pic4.jfif">
+            <img src="pic5.jfif">
+            <img src="pic6.jfif">
+        </div>
+
     </div>
-
-    <div class="photos">
-        <img src="pic1.jfif">
-        <img src="pic2.jfif">
-        <img src="pic3.jfif">
-        <img src="pic4.jfif">
-        <img src="pic5.jfif">
-        <img src="pic6.jfif">
-    </div>
-
 </div>
+
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+<source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
+</audio>
 
 <script>
 const startBtn = document.getElementById("startBtn");
 const startScreen = document.getElementById("startScreen");
 const main = document.getElementById("main");
+const music = document.getElementById("bgMusic");
 
 startBtn.onclick = function(){
     startScreen.style.display = "none";
     main.style.display = "flex";
+    music.play();
 }
 </script>
 
